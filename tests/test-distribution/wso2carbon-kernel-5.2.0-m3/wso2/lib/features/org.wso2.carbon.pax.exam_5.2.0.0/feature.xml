@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<feature id="org.wso2.carbon.pax.exam" label="WSO2 Carbon Kernel - Pax Exam Feature" provider-name="%providerName" version="5.2.0.0">
+  <description>WSO2 Carbon Kernel Parent Pom</description>
+  <copyright>%copyright</copyright>
+  <license url="%licenseURL">%license</license>
+  <plugin id="org.ops4j.base.monitors" unpack="false" version="1.5.0"/>
+  <plugin id="org.ops4j.base.net" unpack="false" version="1.5.0"/>
+  <plugin id="org.ops4j.pax.swissbox.extender" unpack="false" version="1.8.2"/>
+  <plugin id="org.ops4j.base.util.property" unpack="false" version="1.5.0"/>
+  <plugin id="org.ops4j.pax.exam" unpack="false" version="4.9.1"/>
+  <plugin id="org.ops4j.base.lang" unpack="false" version="1.5.0"/>
+  <plugin id="org.ops4j.base.store" unpack="false" version="1.5.0"/>
+  <plugin id="org.ops4j.pax.exam.extender.service" unpack="false" version="4.9.1"/>
+  <plugin id="org.ops4j.pax.exam.rbc" unpack="false" version="4.9.1"/>
+  <plugin id="org.ops4j.base.spi" unpack="false" version="1.5.0"/>
+  <plugin id="org.apache.geronimo.specs.geronimo-atinject_1.0_spec" unpack="false" version="1.0"/>
+  <plugin id="org.ops4j.pax.swissbox.tracker" unpack="false" version="1.8.2"/>
+  <plugin id="org.ops4j.pax.swissbox.framework" unpack="false" version="1.8.2"/>
+  <plugin id="org.ops4j.pax.tipi.hamcrest.core" unpack="false" version="1.3.0.1"/>
+  <plugin id="org.ops4j.pax.swissbox.core" unpack="false" version="1.8.2"/>
+  <plugin id="org.ops4j.base.io" unpack="false" version="1.5.0"/>
+  <plugin id="org.ops4j.pax.swissbox.lifecycle" unpack="false" version="1.8.2"/>
+  <plugin id="org.testng" unpack="false" version="6.9.4"/>
+  <plugin id="org.ops4j.pax.exam.inject" unpack="false" version="4.9.1"/>
+  <require/>
+</feature>
