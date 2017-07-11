@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.wso2.carbon</groupId>
         <artifactId>carbon-kernel-tests</artifactId>
@@ -14,9 +16,22 @@
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.pax.exam.feature</artifactId>
-            <version>5.2.0.1</version>
+            <version>${org.wso2.carbon.pax.exam.feature.version}</version>
             <type>zip</type>
         </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.c5.sample.feature</artifactId>
+            <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.c5.extending.feature</artifactId>
+            <version>${org.wso2.carbon.c5.extending.feature.version}</version>
+            <type>zip</type>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -26,7 +41,7 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <inherited>false</inherited>
                 <executions>
-                   <!-- <execution>
+                    <execution>
                         <id>1-unpack-p2-agent-distribution</id>
                         <phase>test</phase>
                         <goals>
@@ -43,30 +58,39 @@
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
-                    </execution>-->
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
                 <groupId>org.wso2.carbon.maven</groupId>
                 <artifactId>carbon-feature-plugin</artifactId>
-                <version>3.1.1-m3</version>
-             <executions>
-                 <execution>
-                  <id>p2-repo-generation</id>
-                  <phase>package</phase>
-                  <goals>
-                      <goal>generate-repo</goal>
-                  </goals>
-                  <configuration>
-                      <targetRepository>file:${basedir}/target/p2-repo</targetRepository>
-                      <features>
-                          <feature>
-                              <id>org.wso2.carbon.pax.exam.feature</id>
-                              <version>5.2.0.1</version>
-                          </feature>
-                      </features>
-                  </configuration>
-              </execution>
+                <version>3.1.2-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <id>p2-repo-generation</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>generate-repo</goal>
+                        </goals>
+                        <configuration>
+                            <targetRepository>file:${basedir}/target/p2-repo</targetRepository>
+                            <features>
+                                <feature>
+                                    <id>org.wso2.carbon.pax.exam.feature</id>
+                                    <version>${org.wso2.carbon.pax.exam.feature.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.c5.sample.feature</id>
+                                    <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.c5.extending.feature</id>
+                                    <version>${org.wso2.carbon.c5.extending.feature.version}
+                                    </version>
+                                </feature>
+                            </features>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>feature-installation</id>
                         <phase>package</phase>
@@ -76,17 +100,30 @@
                         <configuration>
                             <runtime>default</runtime>
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                            <destination>${basedir}/wso2carbon-kernel-${carbon.kernel.version}/wso2</destination>
+                            <destination>
+                                ${basedir}/wso2carbon-kernel-${carbon.kernel.version}/wso2
+                            </destination>
                             <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
                             <features>
-                                <feature>
-                                    <id>org.wso2.carbon.pax.exam.feature</id>
-                                    <version>5.2.0.1</version>
-                                </feature>
+                                  <feature>
+                                      <id>org.wso2.carbon.pax.exam.feature.group</id>
+                                      <version>${org.wso2.carbon.pax.exam.feature.version}</version>
+                                  </feature>
+<!--
+                                  <feature>
+                                      <id>org.wso2.carbon.c5.sample.feature.group</id>
+                                      <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+                                  </feature>-->
+                          <!--      <feature>
+                                    <id>org.wso2.carbon.c5.extending.feature.group</id>
+                                    <version>${org.wso2.carbon.c5.extending.feature.version}
+                                    </version>
+                                </feature>-->
+
                             </features>
                         </configuration>
                     </execution>
-                    <!-- <execution>
+                <!--     <execution>
                         <id>p2-feature-generation</id>
                         <phase>package</phase>
                         <goals>
@@ -100,8 +137,16 @@
                             <features>
                                 <feature>
                                     <id>org.wso2.carbon.pax.exam.feature.group</id>
-                                    <version>5.2.0.0</version>
+                                    <version>${org.wso2.carbon.pax.exam.feature.version}</version>
                                 </feature>
+                            &lt;!&ndash;    <feature>
+                                    <id>org.wso2.carbon.c5.sample.feature.group</id>
+                                    <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+                                </feature>&ndash;&gt;
+                             &lt;!&ndash;   <feature>
+                                    <id>org.wso2.carbon.c5.sample.feature.group</id>
+                                    <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+                                </feature>&ndash;&gt;
                             </features>
                         </configuration>
                     </execution>-->
@@ -115,8 +160,9 @@
                         <phase>package</phase>
                         <configuration>
                             <tasks>
-                                <replace dir="wso2carbon-kernel-${carbon.kernel.version}/wso2" token="false" value="true">
-                                    <include name="**/bundles.info" />
+                                <replace dir="wso2carbon-kernel-${carbon.kernel.version}/wso2"
+                                         token="false" value="true">
+                                    <include name="**/bundles.info"/>
                                 </replace>
                             </tasks>
                         </configuration>
@@ -175,4 +221,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <org.wso2.carbon.pax.exam.feature.version>5.2.0.0</org.wso2.carbon.pax.exam.feature.version>
+        <org.wso2.carbon.c5.sample.feature.version>5.2.0.0
+        </org.wso2.carbon.c5.sample.feature.version>
+        <org.wso2.carbon.c5.extending.feature.version>5.2.0.0
+        </org.wso2.carbon.c5.extending.feature.version>
+    </properties>
 </project>
