@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>carbon-kernel-features</artifactId>
+        <groupId>org.wso2.carbon</groupId>
+        <version>5.2.0-m3</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>org.wso2.carbon.c5.extending.feature</artifactId>
+    <version>5.2.0.0</version>
+    <packaging>carbon-feature</packaging>
+
+    <name>org.wso2.carbon.c5.extending.feature</name>
+    <url>http://maven.apache.org</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample-bundle3</artifactId>
+            <version>${sample.bundle3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.c5.sample.feature</artifactId>
+            <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+            <type>zip</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.wso2.carbon.maven</groupId>
+                <artifactId>carbon-feature-plugin</artifactId>
+                <version>3.1.1-m3</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>1-p2-feature-generation</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <propertyFile>../../features/etc/feature.properties</propertyFile>
+                            <adviceFileContents>
+                                <advice>
+                                    <name>org.eclipse.equinox.p2.type.group</name>
+                                    <value>false</value>
+                                </advice>
+                            </adviceFileContents>
+                            <bundles>
+                                <bundle>
+                                    <symbolicName>sample-bundle3</symbolicName>
+                                    <version>${sample.bundle3.version}</version>
+                                </bundle>
+                            </bundles>
+                            <importFeatures>
+                                <importFeatureDef>
+                                    <id>org.wso2.carbon.c5.sample.feature</id>
+                                    <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+                                </importFeatureDef>
+                            </importFeatures>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sample.bundle3.version>5.2.0.0</sample.bundle3.version>
+        <org.wso2.carbon.c5.sample.feature.version>5.2.0.1
+        </org.wso2.carbon.c5.sample.feature.version>
+    </properties>
+</project>

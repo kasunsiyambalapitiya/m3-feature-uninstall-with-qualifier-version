@@ -14,7 +14,9 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -25,11 +27,16 @@
 
     <artifactId>org.wso2.carbon.pax.exam.feature</artifactId>
     <packaging>carbon-feature</packaging>
-    <version>5.2.0.1</version>
+    <version>5.2.0</version>
     <name>WSO2 Carbon Kernel - Pax Exam Feature</name>
     <url>http://wso2.com</url>
 
     <dependencies>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample-bundle2</artifactId>
+            <version>${sample.bundle2.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.ops4j.base</groupId>
             <artifactId>ops4j-base-lang</artifactId>
@@ -149,77 +156,81 @@
                                     <version>${dependency.base.version}</version>
                                 </bundle>
                                 <bundle>
-                                    <symbolicName>org.ops4j.base.monitors</symbolicName>
-                                    <version>${dependency.base.version}</version>
+                                    <symbolicName>sample-bundle2</symbolicName>
+                                    <version>${sample.bundle2.version}</version>
                                 </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.base.net</symbolicName>
-                                    <version>${dependency.base.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.base.store</symbolicName>
-                                    <version>${dependency.base.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.base.io</symbolicName>
-                                    <version>${dependency.base.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.base.spi</symbolicName>
-                                    <version>${dependency.base.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.base.util.property</symbolicName>
-                                    <version>${dependency.base.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.pax.swissbox.core</symbolicName>
-                                    <version>${dependency.swissbox.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.pax.swissbox.extender</symbolicName>
-                                    <version>${dependency.swissbox.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.pax.swissbox.lifecycle</symbolicName>
-                                    <version>${dependency.swissbox.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.pax.swissbox.tracker</symbolicName>
-                                    <version>${dependency.swissbox.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.pax.swissbox.framework</symbolicName>
-                                    <version>${dependency.swissbox.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.pax.exam</symbolicName>
-                                    <version>${pax.exam.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.pax.exam.extender.service</symbolicName>
-                                    <version>${pax.exam.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.pax.exam.rbc</symbolicName>
-                                    <version>${pax.exam.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.pax.exam.inject</symbolicName>
-                                    <version>${pax.exam.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.ops4j.pax.tipi.hamcrest.core</symbolicName>
-                                    <version>${dependency.tipi.hamcrest.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.apache.geronimo.specs.geronimo-atinject_1.0_spec</symbolicName>
-                                    <version>${geronimo.atinject.spec.version}</version>
-                                </bundle>
-                                <bundle>
-                                    <symbolicName>org.testng</symbolicName>
-                                    <version>${testng.version}</version>
-                                </bundle>
+                                <!-- <bundle>
+                                     <symbolicName>org.ops4j.base.monitors</symbolicName>
+                                     <version>${dependency.base.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.base.net</symbolicName>
+                                     <version>${dependency.base.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.base.store</symbolicName>
+                                     <version>${dependency.base.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.base.io</symbolicName>
+                                     <version>${dependency.base.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.base.spi</symbolicName>
+                                     <version>${dependency.base.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.base.util.property</symbolicName>
+                                     <version>${dependency.base.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.pax.swissbox.core</symbolicName>
+                                     <version>${dependency.swissbox.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.pax.swissbox.extender</symbolicName>
+                                     <version>${dependency.swissbox.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.pax.swissbox.lifecycle</symbolicName>
+                                     <version>${dependency.swissbox.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.pax.swissbox.tracker</symbolicName>
+                                     <version>${dependency.swissbox.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.pax.swissbox.framework</symbolicName>
+                                     <version>${dependency.swissbox.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.pax.exam</symbolicName>
+                                     <version>${pax.exam.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.pax.exam.extender.service</symbolicName>
+                                     <version>${pax.exam.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.pax.exam.rbc</symbolicName>
+                                     <version>${pax.exam.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.pax.exam.inject</symbolicName>
+                                     <version>${pax.exam.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.ops4j.pax.tipi.hamcrest.core</symbolicName>
+                                     <version>${dependency.tipi.hamcrest.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.apache.geronimo.specs.geronimo-atinject_1.0_spec</symbolicName>
+                                     <version>${geronimo.atinject.spec.version}</version>
+                                 </bundle>
+                                 <bundle>
+                                     <symbolicName>org.testng</symbolicName>
+                                     <version>${testng.version}</version>
+                                 </bundle>-->
                             </bundles>
                         </configuration>
                     </execution>
@@ -233,5 +244,6 @@
         <dependency.swissbox.version>1.8.2</dependency.swissbox.version>
         <dependency.tipi.hamcrest.version>1.3.0.1</dependency.tipi.hamcrest.version>
         <dependency.tipi.junit.version>4.12.0.1</dependency.tipi.junit.version>
+        <sample.bundle2.version>5.2.0</sample.bundle2.version>
     </properties>
 </project>

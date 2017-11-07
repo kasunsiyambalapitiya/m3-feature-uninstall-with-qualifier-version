@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>carbon-kernel-features</artifactId>
+        <groupId>org.wso2.carbon</groupId>
+        <version>5.2.0-m3</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>org.wso2.carbon.c5.sample2.feature</artifactId>
+    <version>5.2.0.2</version>
+    <packaging>carbon-feature</packaging>
+
+    <name>org.wso2.carbon.c5.sample.feature2</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.pax.exam.feature</artifactId>
+            <version>${org.wso2.carbon.pax.exam.feature.version}</version>
+            <type>zip</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.wso2.carbon.maven</groupId>
+                <artifactId>carbon-feature-plugin</artifactId>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>1-p2-feature-gen</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <propertyFile>../../features/etc/feature.properties</propertyFile>
+                            <adviceFileContents>
+                                <advice>
+                                    <name>org.eclipse.equinox.p2.type.group</name>
+                                    <value>false</value>
+                                </advice>
+                            </adviceFileContents>
+                            <includeFeatures>
+                                <includeFeatureDef>
+                                    <id>org.wso2.carbon.pax.exam.feature</id>
+                                    <version>${org.wso2.carbon.pax.exam.feature.version}</version>
+                                </includeFeatureDef>
+                            </includeFeatures>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <org.wso2.carbon.pax.exam.feature.version>5.2.0.2</org.wso2.carbon.pax.exam.feature.version>
+    </properties>
+
+</project>
